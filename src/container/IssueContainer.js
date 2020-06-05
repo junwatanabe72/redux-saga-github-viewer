@@ -2,13 +2,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
   addIssue,
-  updateIssue,
-  removeIssue,
   modalPush,
   modalPop,
   getIssue,
   postIssue,
   putIssue,
+  getUser,
 } from '../actions/index';
 import Issue from '../components/organisms/Issue';
 
@@ -24,11 +23,10 @@ function mapDispatchToProps(dispatch) {
       modalPush,
       modalPop,
       addIssue,
-      updateIssue,
-      removeIssue,
       getIssue,
       postIssue,
       putIssue,
+      getUser,
     },
     dispatch
   );

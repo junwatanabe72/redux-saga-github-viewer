@@ -15,7 +15,6 @@ function IssueFunction({
   propsFunction,
   checkedAll,
   addIssue,
-  removeIssue,
   data,
   modalPush,
   modalPop,
@@ -29,7 +28,6 @@ function IssueFunction({
         checkedObject={checkedObject}
         checkedAll={checkedAll}
         addIssue={addIssue}
-        removeIssue={removeIssue}
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}

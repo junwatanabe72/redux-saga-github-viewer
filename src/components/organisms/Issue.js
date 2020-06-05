@@ -8,17 +8,7 @@ const Container = styled.div`
   padding: 16px;
 `;
 
-function Issue({
-  data,
-  modalPush,
-  modalPop,
-  addIssue,
-  updateIssue,
-  removeIssue,
-  getIssue,
-  postIssue,
-  putIssue,
-}) {
+function Issue({ data, modalPush, modalPop, addIssue, getIssue, postIssue, putIssue }) {
   const [checkedObject, setChecked] = useState({});
   const [serachWord, setWord] = useState('');
   const [checkedAll, setCheckedAll] = useState(false);
@@ -55,22 +45,18 @@ function Issue({
   const InputWord = (e) => {
     setWord(e.target.value);
   };
-  // useEffect(() => {
-  //   document.addEventListener('load', getIssue);
-  //   return function cleanup() {
-  //     document.removeEventListener('load', getIssue);
-  //   };
-  // });
+
+  //saga
+  useEffect(() => {
+    document.addEventListener('load', getIssue());
+    return function cleanup() {
+      document.removeEventListener('load', getIssue());
+    };
+  }, []);
+  //saga
+
   return (
     <Container>
-      <div
-        onClick={() => {
-          getIssue();
-        }}
-      >
-        getclick
-      </div>
-
       <IssueFunction
         checkedObject={checkedObject}
         propsFunction={InputWord}
@@ -78,7 +64,6 @@ function Issue({
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
-        removeIssue={removeIssue}
         addIssue={addIssue}
         postIssue={postIssue}
       />
@@ -90,7 +75,7 @@ function Issue({
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
-        updateIssue={updateIssue}
+        putIssue={putIssue}
       />
     </Container>
   );

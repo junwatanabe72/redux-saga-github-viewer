@@ -4,7 +4,6 @@ import Logo from '../../atoms/Logo';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import TextArea from '../../atoms/TextArea';
-import { createDate } from '../../../utils/dataHelper';
 
 const Container = styled.div`
   display: flex;
@@ -68,7 +67,7 @@ const status = {
   close: 'close',
 };
 
-function ModalUpdate({ updateIssue, modalPop, Value }) {
+function ModalUpdate({ updateIssue, modalPop, Value, putIssue }) {
   const [iss, setIssue] = useState(Value.title);
   const [des, setDescription] = useState(Value.body);
   const [sta, setStatus] = useState(Value.state);
@@ -78,13 +77,11 @@ function ModalUpdate({ updateIssue, modalPop, Value }) {
 
   const onSubmit = () => {
     const data = {
-      title: Value.title,
-      description: Value.body,
-      status: Value.state,
+      title: iss,
+      description: des,
+      status: sta,
       id: Value.id,
-      createBy: Value.user.login,
-      createAt: Value.created_at,
-      updateAt: Value.updated_at,
+      number: Value.number,
     };
 
     if (!data.title) {
@@ -96,7 +93,10 @@ function ModalUpdate({ updateIssue, modalPop, Value }) {
       return;
     }
 
-    updateIssue(data);
+    //saga
+    putIssue(data);
+    //saga
+
     setIssue('');
     setDescription('');
     modalPop();

@@ -9,7 +9,7 @@ const StyledTd = styled.td`
   border-right: solid 1px white;
 `;
 // "2020-06-01T05:07:16Z"
-const regex = /T[0-9]+\:[0-9]+\:[0-9]+[A-Z]/;
+const regex = /T[0-9]+:[0-9]+:[0-9]+[A-Z]/;
 function TableDataCell({ propsFunction, value }) {
   const fixedValue = value.replace(regex, '');
   return <StyledTd onClick={propsFunction}>{fixedValue}</StyledTd>;

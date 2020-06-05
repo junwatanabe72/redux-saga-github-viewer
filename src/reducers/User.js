@@ -1,10 +1,21 @@
+import { ADD_USER } from '../actions/index';
+
 const initialState = {
-  name: 'junwatanabe',
-  email: 'junwatanabe72@gmail.com',
-  profileUrl:
-    'https://avatars1.githubusercontent.com/u/50585862?s=460&u=64c7812edd7b65bdbe3e3fc57e6ac8a383a418af&v=4',
+  name: '',
+  email: '',
+  profileUrl: '',
 };
 
 export default function UserReducer(state = initialState, action) {
-  return state;
+  const { data } = action.payload || {};
+  switch (action.type) {
+    case ADD_USER: {
+      console.log(data);
+      state = { ...state, name: data.login, email: data.email, profileUrl: data.avatar_url };
+      return state;
+    }
+    default: {
+      return state;
+    }
+  }
 }

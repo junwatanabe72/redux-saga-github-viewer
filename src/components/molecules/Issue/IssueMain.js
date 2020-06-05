@@ -16,7 +16,7 @@ function IssueMain({
   data,
   modalPush,
   modalPop,
-  updateIssue,
+  putIssue,
 }) {
   return (
     <Container>
@@ -28,7 +28,7 @@ function IssueMain({
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
-        updateIssue={updateIssue}
+        putIssue={putIssue}
       />
     </Container>
   );

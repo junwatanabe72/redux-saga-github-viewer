@@ -4,7 +4,6 @@ import Logo from '../../atoms/Logo';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import TextArea from '../../atoms/TextArea';
-import { createDate } from '../../../utils/dataHelper';
 
 const Container = styled.div`
   display: flex;
@@ -54,11 +53,6 @@ const ButtonSet = styled.div`
   justify-content: flex-end;
 `;
 
-const status = {
-  open: 'Open',
-  close: 'Close',
-};
-
 function ModalMain({ addIssue, modalPop, postIssue }) {
   const [iss, setIssue] = useState('');
   const [des, setDescription] = useState('');
@@ -67,7 +61,6 @@ function ModalMain({ addIssue, modalPop, postIssue }) {
     const data = {
       title: iss,
       description: des,
-      createBy: 'junwatanabe',
     };
     if (!data.title) {
       setMessage(errorMessage.title);
@@ -77,8 +70,11 @@ function ModalMain({ addIssue, modalPop, postIssue }) {
       setMessage(errorMessage.description);
       return;
     }
+
+    //saga
     postIssue(data);
-    // addIssue(data);
+    //saga
+
     setIssue('');
     setDescription('');
     modalPop();

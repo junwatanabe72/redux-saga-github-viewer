@@ -12,7 +12,6 @@ function IssueButtons({
   modalPush,
   modalPop,
   addIssue,
-  removeIssue,
   checkedObject,
   checkedAll,
   postIssue,
@@ -21,12 +20,12 @@ function IssueButtons({
     modalPush(<ModalMain key={2} postIssue={postIssue} addIssue={addIssue} modalPop={modalPop} />);
   // const _deleteIssue =
   //   checkedAll === true ? () => deleteIssue(data) : () => deleteIssue(checkedObject);
-  const _deleteIssue = () => removeIssue(checkedObject);
+  // const _deleteIssue = () => removeIssue(checkedObject);
   // const _deleteIssue = () => removeIssue(checkedAll ? data : checkedObject);
   return (
     <Container>
       <Button ButtonName={'New'} type={'primary'} propsFunction={_modalPush} />
-      <Button ButtonName={'Delete'} type={'danger'} propsFunction={_deleteIssue} />
+      <Button ButtonName={'Delete'} type={'danger'} propsFunction={postIssue} />
     </Container>
   );
 }

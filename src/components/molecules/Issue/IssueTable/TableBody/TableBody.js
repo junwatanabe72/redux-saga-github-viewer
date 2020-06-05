@@ -7,15 +7,7 @@ const StyledTd = styled.td`
   margin: 8px;
 `;
 
-function TableBody({
-  data,
-  propsFunction,
-  serachWord,
-  checkedAll,
-  modalPush,
-  modalPop,
-  updateIssue,
-}) {
+function TableBody({ data, propsFunction, serachWord, checkedAll, modalPush, modalPop, putIssue }) {
   const List = Object.values(data).filter((value) => value.title.includes(serachWord));
 
   return (
@@ -29,7 +21,7 @@ function TableBody({
             checkedAll={checkedAll}
             modalPush={modalPush}
             modalPop={modalPop}
-            updateIssue={updateIssue}
+            putIssue={putIssue}
           />
         ))
       ) : (

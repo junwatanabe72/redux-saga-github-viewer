@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Logo from '../atoms/Logo';
 import ProfileMain from '../molecules/Profile/ProfileMain';
@@ -8,7 +8,15 @@ const Container = styled.div`
   font-size: 16px;
 `;
 
-function Profile({ userData }) {
+function Profile({ userData, getUser }) {
+  //saga
+  useEffect(() => {
+    document.addEventListener('load', getUser());
+    return function cleanup() {
+      document.removeEventListener('load', getUser());
+    };
+  }, []);
+  //saga
   return (
     <Container>
       <Logo name={'Profile'} />

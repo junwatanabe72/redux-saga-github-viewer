@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import mySaga from './sagas/index';
@@ -48,11 +48,7 @@ const GlobalStyle = createGlobalStyle`
 const sagaMiddleware = createSagaMiddleware();
 
 /* eslint-disable no-underscore-dangle */
-const store = createStore(
-  reducer /* preloadedState, */,
-  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(sagaMiddleware)
-);
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 
 sagaMiddleware.run(mySaga);
 
