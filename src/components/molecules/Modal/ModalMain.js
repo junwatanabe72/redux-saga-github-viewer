@@ -59,7 +59,7 @@ const status = {
   close: 'Close',
 };
 
-function ModalMain({ addIssue, modalPop }) {
+function ModalMain({ addIssue, modalPop, postIssue }) {
   const [iss, setIssue] = useState('');
   const [des, setDescription] = useState('');
   const [vaildMessege, setMessage] = useState('');
@@ -67,10 +67,7 @@ function ModalMain({ addIssue, modalPop }) {
     const data = {
       title: iss,
       description: des,
-      status: status.open,
       createBy: 'junwatanabe',
-      createAt: createDate,
-      updateAt: createDate,
     };
     if (!data.title) {
       setMessage(errorMessage.title);
@@ -80,8 +77,8 @@ function ModalMain({ addIssue, modalPop }) {
       setMessage(errorMessage.description);
       return;
     }
-
-    addIssue(data);
+    postIssue(data);
+    // addIssue(data);
     setIssue('');
     setDescription('');
     modalPop();

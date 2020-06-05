@@ -15,8 +15,10 @@ function IssueButtons({
   removeIssue,
   checkedObject,
   checkedAll,
+  postIssue,
 }) {
-  const _modalPush = () => modalPush(<ModalMain addIssue={addIssue} modalPop={modalPop} />);
+  const _modalPush = () =>
+    modalPush(<ModalMain key={2} postIssue={postIssue} addIssue={addIssue} modalPop={modalPop} />);
   // const _deleteIssue =
   //   checkedAll === true ? () => deleteIssue(data) : () => deleteIssue(checkedObject);
   const _deleteIssue = () => removeIssue(checkedObject);

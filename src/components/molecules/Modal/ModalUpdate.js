@@ -64,27 +64,27 @@ const StyledSelectBar = styled.select`
 `;
 
 const status = {
-  open: 'Open',
-  close: 'Close',
+  open: 'open',
+  close: 'close',
 };
 
 function ModalUpdate({ updateIssue, modalPop, Value }) {
   const [iss, setIssue] = useState(Value.title);
-  const [des, setDescription] = useState(Value.description);
-  const [sta, setStatus] = useState(Value.status);
+  const [des, setDescription] = useState(Value.body);
+  const [sta, setStatus] = useState(Value.state);
   const [vaildMessege, setMessage] = useState('');
 
-  const oppositedStatus = Value.status === status.open ? status.close : status.open;
+  const oppositedStatus = Value.state === status.open ? status.close : status.open;
 
   const onSubmit = () => {
     const data = {
-      title: iss,
-      description: des,
-      status: sta,
+      title: Value.title,
+      description: Value.body,
+      status: Value.state,
       id: Value.id,
-      createBy: Value.createBy,
-      createAt: Value.createAt,
-      updateAt: createDate,
+      createBy: Value.user.login,
+      createAt: Value.created_at,
+      updateAt: Value.updated_at,
     };
 
     if (!data.title) {
@@ -119,21 +119,17 @@ function ModalUpdate({ updateIssue, modalPop, Value }) {
       <StyledInput>
         <StyledInputTitle>
           <label>タイトル</label>
-          <Input PlaceHolder={Value.title} value={iss} propsFunction={onChangeIssue} />
+          <Input placeHolder={Value.title} value={iss} propsFunction={onChangeIssue} />
         </StyledInputTitle>
         <StyledInputDes>
           <label>説明</label>
-          <TextArea
-            PlaceHolder={Value.description}
-            value={des}
-            propsFunction={onChangeDescription}
-          />
+          <TextArea placeHolder={Value.body} value={des} propsFunction={onChangeDescription} />
         </StyledInputDes>
       </StyledInput>
       <StyledSelect>
         <label>ステータス</label>
         <StyledSelectBar onChange={onChangeStatus}>
-          <option>{Value.status}</option>
+          <option>{Value.state}</option>
           <option>{oppositedStatus}</option>
         </StyledSelectBar>
       </StyledSelect>

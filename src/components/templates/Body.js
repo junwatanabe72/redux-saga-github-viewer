@@ -5,6 +5,7 @@ import Issue from '../../container/IssueContainer';
 import Profile from '../../container/ProfileContainer';
 import Top from '../organisms/Top';
 import PullRequest from '../organisms/Pullrequest';
+// import Axios from '../atoms/Axios';
 
 const Container = styled.div`
   max-width: 896px;

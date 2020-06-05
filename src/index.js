@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import mySaga from './sagas/index';
+
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
-
 import * as serviceWorker from './serviceWorker';
 import reducer from './reducers/Combine';
 
@@ -42,12 +45,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const sagaMiddleware = createSagaMiddleware();
+
 /* eslint-disable no-underscore-dangle */
 const store = createStore(
   reducer /* preloadedState, */,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(sagaMiddleware)
 );
-/* eslint-enable */
+
+sagaMiddleware.run(mySaga);
 
 ReactDOM.render(
   <React.StrictMode>

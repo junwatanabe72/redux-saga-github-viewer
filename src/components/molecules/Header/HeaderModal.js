@@ -19,8 +19,8 @@ function HeaderModal() {
           size={'13'}
           to={'/'}
           value={'Top'}
-          hoverColor={'white'}
-          hoverBackgroundColor={'#0066ff'}
+          hovercolor={'white'}
+          hoverbackgroundcolor={'#0066ff'}
         />
       </StyledList>
       <StyledList>
@@ -28,8 +28,8 @@ function HeaderModal() {
           size={'13'}
           to={'profile'}
           value={'Your Profile'}
-          hoverColor={'white'}
-          hoverBackgroundColor={'#0066ff'}
+          hovercolor={'white'}
+          hoverbackgroundcolor={'#0066ff'}
         />
       </StyledList>
       <StyledList>
@@ -37,8 +37,8 @@ function HeaderModal() {
           size={'13'}
           to={'Issue'}
           value={'Issue'}
-          hoverColor={'white'}
-          hoverBackgroundColor={'#0066ff'}
+          hovercolor={'white'}
+          hoverbackgroundcolor={'#0066ff'}
         />
       </StyledList>
       <StyledList>
@@ -46,8 +46,8 @@ function HeaderModal() {
           size={'13'}
           to={'PullRequest'}
           value={'Pull Request'}
-          hoverColor={'white'}
-          hoverBackgroundColor={'#0066ff'}
+          hovercolor={'white'}
+          hoverbackgroundcolor={'#0066ff'}
         />
       </StyledList>
     </Container>

@@ -14,15 +14,15 @@ const StyledTr = styled.tr`
 
 function TableData({ value, modalPush, modalPop, propsFunction, checkedAll, updateIssue }) {
   const _modalPush = () =>
-    modalPush(<ModalUpdate modalPop={modalPop} Value={value} updateIssue={updateIssue} />);
+    modalPush(<ModalUpdate key={1} modalPop={modalPop} Value={value} updateIssue={updateIssue} />);
   return (
     <StyledTr>
       <TableDataCheckBoxCell value={value} propsFunction={propsFunction} checkedAll={checkedAll} />
       <TableDataCell value={value.title} propsFunction={_modalPush} />
-      <TableDataCell value={value.status} propsFunction={_modalPush} />
-      <TableDataCell value={value.createBy} propsFunction={_modalPush} />
-      <TableDataCell value={value.createAt} propsFunction={_modalPush} />
-      <TableDataCell value={value.updateAt} propsFunction={_modalPush} />
+      <TableDataCell value={value.state} propsFunction={_modalPush} />
+      <TableDataCell value={value.user.login} propsFunction={_modalPush} />
+      <TableDataCell value={value.created_at} propsFunction={_modalPush} />
+      <TableDataCell value={value.updated_at} propsFunction={_modalPush} />
     </StyledTr>
   );
 }

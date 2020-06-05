@@ -9,19 +9,19 @@ const StyledLink = styled(Link)`
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.color};
   &:hover {
-    color: ${(props) => props.hoverColor};
-    background-color: ${(props) => props.hoverBackgroundColor};
+    color: ${(props) => props.hovercolor};
+    background-color: ${(props) => props.hoverbackgroundcolor};
   }
 `;
 
-function LinkButton({ to, size, color = 'black', hoverBackgroundColor, hoverColor, value }) {
+function LinkButton({ to, size, color = 'black', hoverbackgroundcolor, hovercolor, value }) {
   return (
     <StyledLink
       size={size}
       to={to}
       color={color}
-      hoverBackgroundColor={hoverBackgroundColor}
-      hoverColor={hoverColor}
+      hoverbackgroundcolor={hoverbackgroundcolor}
+      hovercolor={hovercolor}
     >
       {value}
     </StyledLink>

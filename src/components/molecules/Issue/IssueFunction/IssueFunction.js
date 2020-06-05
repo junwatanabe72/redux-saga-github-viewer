@@ -19,6 +19,7 @@ function IssueFunction({
   data,
   modalPush,
   modalPop,
+  postIssue,
 }) {
   return (
     <Container>
@@ -32,6 +33,7 @@ function IssueFunction({
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
+        postIssue={postIssue}
       />
     </Container>
   );
