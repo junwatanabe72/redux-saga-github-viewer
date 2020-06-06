@@ -14,11 +14,11 @@ function IssueFunction({
   checkedObject,
   propsFunction,
   checkedAll,
-  addIssue,
   data,
   modalPush,
   modalPop,
   postIssue,
+  putIssue,
 }) {
   return (
     <Container>
@@ -27,11 +27,11 @@ function IssueFunction({
       <IssueButtons
         checkedObject={checkedObject}
         checkedAll={checkedAll}
-        addIssue={addIssue}
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
         postIssue={postIssue}
+        putIssue={putIssue}
       />
     </Container>
   );

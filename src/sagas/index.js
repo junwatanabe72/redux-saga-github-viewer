@@ -1,4 +1,4 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
+import { call, put, takeLatest, all, delay } from 'redux-saga/effects';
 import {
   ISSUE_REQUESTED,
   ISSUE_POSTREQUESTED,
@@ -21,6 +21,8 @@ export function* postIssueAsync(action) {
 }
 
 export function* putIssueAsync(action) {
+  yield console.log(action.payload);
+  yield delay(2000);
   yield call(putAxios, action.payload);
   return;
 }

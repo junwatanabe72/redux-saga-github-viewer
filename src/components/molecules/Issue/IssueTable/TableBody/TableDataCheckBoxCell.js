@@ -10,17 +10,17 @@ const StyledTh = styled.th`
 
 function TableDataCheckBoxCell({ value, propsFunction, checkedAll }) {
   const [Checked, setChecked] = useState(false);
-
+  const closeValue = { ...value, state: 'close' };
   const changedCheacked = () => {
     setChecked(!Checked);
   };
 
   const _propsFunction = () => {
-    propsFunction(value, Checked);
+    propsFunction(closeValue, Checked);
     changedCheacked();
   };
   const _propsFunctionIre = () => {
-    propsFunction(value, !Checked);
+    propsFunction(closeValue, !Checked);
     changedCheacked();
   };
 

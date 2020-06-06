@@ -53,7 +53,7 @@ const ButtonSet = styled.div`
   justify-content: flex-end;
 `;
 
-function ModalMain({ addIssue, modalPop, postIssue }) {
+function ModalMain({ modalPop, postIssue }) {
   const [iss, setIssue] = useState('');
   const [des, setDescription] = useState('');
   const [vaildMessege, setMessage] = useState('');

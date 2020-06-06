@@ -67,7 +67,7 @@ const status = {
   close: 'close',
 };
 
-function ModalUpdate({ updateIssue, modalPop, Value, putIssue }) {
+function ModalUpdate({ modalPop, Value, putIssue }) {
   const [iss, setIssue] = useState(Value.title);
   const [des, setDescription] = useState(Value.body);
   const [sta, setStatus] = useState(Value.state);
@@ -76,19 +76,15 @@ function ModalUpdate({ updateIssue, modalPop, Value, putIssue }) {
   const oppositedStatus = Value.state === status.open ? status.close : status.open;
 
   const onSubmit = () => {
-    const data = {
-      title: iss,
-      description: des,
-      status: sta,
-      id: Value.id,
-      number: Value.number,
-    };
+    const id = Value.id;
 
-    if (!data.title) {
+    const data = { id: { ...Value, title: iss, body: des, state: sta } };
+
+    if (!data.id.title) {
       setMessage(errorMessage.title);
       return;
     }
-    if (!data.description) {
+    if (!data.id.description) {
       setMessage(errorMessage.description);
       return;
     }

@@ -12,9 +12,9 @@ export default function IssueReducer(state = initialState, action) {
 
   switch (action.type) {
     case ADD_ISSUE: {
-      // console.log(issue);
       for (let key in issue) {
-        newData[key] = issue[key];
+        const id = issue[key].id;
+        newData[id] = issue[key];
       }
       state = { data: newData };
       return state;

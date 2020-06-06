@@ -11,21 +11,26 @@ function IssueButtons({
   data,
   modalPush,
   modalPop,
-  addIssue,
   checkedObject,
   checkedAll,
   postIssue,
+  putIssue,
 }) {
   const _modalPush = () =>
-    modalPush(<ModalMain key={2} postIssue={postIssue} addIssue={addIssue} modalPop={modalPop} />);
-  // const _deleteIssue =
-  //   checkedAll === true ? () => deleteIssue(data) : () => deleteIssue(checkedObject);
-  // const _deleteIssue = () => removeIssue(checkedObject);
-  // const _deleteIssue = () => removeIssue(checkedAll ? data : checkedObject);
+    modalPush(<ModalMain key={2} postIssue={postIssue} modalPop={modalPop} />);
+
+  for (let key in data) {
+    data[key].state = 'close';
+  }
+  //modalでcloseする場合と生合成を取るため、object構造を調整する
+  const List = Object.values(data);
+
+  const _closeIssue = () => putIssue(checkedAll ? List : checkedObject);
+
   return (
     <Container>
       <Button ButtonName={'New'} type={'primary'} propsFunction={_modalPush} />
-      <Button ButtonName={'Delete'} type={'danger'} propsFunction={postIssue} />
+      <Button ButtonName={'Delete'} type={'danger'} propsFunction={_closeIssue} />
     </Container>
   );
 }

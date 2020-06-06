@@ -21,26 +21,29 @@ export async function getAxios() {
 export async function postAxios(data) {
   const queries = { title: data.issue.title, body: data.issue.description };
   try {
-    const data = await client.post(`/repos/junwatanabe72/linux/issues`, queries);
-    return { data };
+    await client.post(`/repos/junwatanabe72/linux/issues`, queries);
+    return;
   } catch (e) {
     return { e };
   }
 }
 
 export async function putAxios(data) {
-  const id = data.issue.number;
-  const queries = {
-    title: data.issue.title,
-    body: data.issue.description,
-    state: data.issue.status,
-  };
-  try {
-    const data = await client.patch(`/repos/junwatanabe72/linux/issues/` + id, queries);
-    return { data };
-  } catch (e) {
-    return { e };
+  const newData = data.issue;
+  for (let key in newData) {
+    const id = newData[key].number;
+    const queries = {
+      title: newData[key].title,
+      body: newData[key].body,
+      state: newData[key].state,
+    };
+    try {
+      await client.patch(`/repos/junwatanabe72/linux/issues/` + id, queries);
+    } catch (e) {
+      return { e };
+    }
   }
+  return;
 }
 
 export async function getUserAxios() {

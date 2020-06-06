@@ -9,7 +9,6 @@ const StyledTd = styled.td`
 
 function TableBody({ data, propsFunction, serachWord, checkedAll, modalPush, modalPop, putIssue }) {
   const List = Object.values(data).filter((value) => value.title.includes(serachWord));
-
   return (
     <tbody>
       {List.length > 0 ? (
