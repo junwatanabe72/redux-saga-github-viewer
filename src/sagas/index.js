@@ -1,4 +1,4 @@
-import { call, put, takeLatest, all, delay } from 'redux-saga/effects';
+import { call, put, takeLatest, all } from 'redux-saga/effects';
 import {
   ISSUE_REQUESTED,
   ISSUE_POSTREQUESTED,
@@ -8,6 +8,8 @@ import {
   USER_REQUESTED,
 } from '../actions/index';
 import { getAxios, postAxios, putAxios, getUserAxios } from '../service/Axios';
+import { options } from '../utils/Toastify';
+import { toast } from 'react-toastify';
 
 export function* getIssueAsync(action) {
   const { data } = yield call(getAxios, action.payload);
@@ -16,14 +18,23 @@ export function* getIssueAsync(action) {
 }
 
 export function* postIssueAsync(action) {
-  yield call(postAxios, action.payload);
+  const { data } = yield call(postAxios, action.payload);
+  if (data.status === 201) {
+    yield toast.success('投稿に成功しました。', options);
+  } else {
+    yield toast.error('投稿に失敗しました。', options);
+  }
   return;
 }
 
 export function* putIssueAsync(action) {
-  yield console.log(action.payload);
-  yield delay(2000);
-  yield call(putAxios, action.payload);
+  const { data } = yield call(putAxios, action.payload);
+  console.log(data.status);
+  if (data.status === 200) {
+    yield toast.success('更新に成功しました。', options);
+  } else {
+    yield toast.error('更新に失敗しました。', options);
+  }
   return;
 }
 

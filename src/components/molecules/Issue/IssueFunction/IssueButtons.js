@@ -19,13 +19,12 @@ function IssueButtons({
   const _modalPush = () =>
     modalPush(<ModalMain key={2} postIssue={postIssue} modalPop={modalPop} />);
 
-  for (let key in data) {
-    data[key].state = 'close';
+  const List = JSON.parse(JSON.stringify(data));
+  const newData = { ...List };
+  for (let key in newData) {
+    newData[key].state = 'close';
   }
-  //modalでcloseする場合と生合成を取るため、object構造を調整する
-  const List = Object.values(data);
-
-  const _closeIssue = () => putIssue(checkedAll ? List : checkedObject);
+  const _closeIssue = () => putIssue(checkedAll ? newData : checkedObject);
 
   return (
     <Container>

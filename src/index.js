@@ -5,6 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import mySaga from './sagas/index';
+import Toastify from './utils/Toastify';
 
 import { createGlobalStyle } from 'styled-components';
 import App from './App';
@@ -35,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: black;
+    color: blue;
   }
   textarea{
     min-height: 150px;
@@ -56,6 +57,7 @@ ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
     <Provider store={store}>
+      <Toastify />
       <App />
     </Provider>
   </React.StrictMode>,

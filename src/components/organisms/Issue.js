@@ -52,7 +52,7 @@ function Issue({ data, modalPush, modalPop, getIssue, postIssue, putIssue }) {
     return function cleanup() {
       document.removeEventListener('load', getIssue());
     };
-  }, []);
+  }, [data]);
   //saga
 
   return (

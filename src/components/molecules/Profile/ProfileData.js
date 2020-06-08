@@ -4,7 +4,6 @@ import Image from '../../atoms/Image';
 
 const Container = styled.div`
   width: 50%;
-  height: 200px;
   color: #808080;
   margin: 8px 16px;
   text-align: left;
@@ -15,7 +14,7 @@ function ProfileData({ userData }) {
     <Container>
       <p>プロフィール</p>
       <p>
-        <Image width={'64px'} image={userData.profileUrl} />
+        <Image width={'256px'} image={userData.avatar_url} />
       </p>
     </Container>
   );

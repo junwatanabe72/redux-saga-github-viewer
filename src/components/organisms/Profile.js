@@ -5,7 +5,7 @@ import ProfileMain from '../molecules/Profile/ProfileMain';
 
 const Container = styled.div`
   margin: 24px;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
 function Profile({ userData, getUser }) {
@@ -15,7 +15,7 @@ function Profile({ userData, getUser }) {
     return function cleanup() {
       document.removeEventListener('load', getUser());
     };
-  }, []);
+  }, [userData]);
   //saga
   return (
     <Container>

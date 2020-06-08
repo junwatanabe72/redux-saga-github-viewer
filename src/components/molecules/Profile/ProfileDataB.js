@@ -17,8 +17,18 @@ function ProfileDataB({ userData }) {
     <Container>
       <p>ユーザ名</p>
       <StyledP>{userData.name}</StyledP>
-      <p>メールアドレス</p>
-      <StyledP>{userData.email}</StyledP>
+      <p>アカウントURL</p>
+      <StyledP>
+        <a href={userData.html_url}>{userData.html_url}</a>
+      </StyledP>
+      <p>フォロー数</p>
+      <StyledP>{userData.following}</StyledP>
+      <p>フォロワー数</p>
+      <StyledP>{userData.followers}</StyledP>
+      <p>パブリックレポジトリ数</p>
+      <StyledP>{userData.public_repos}</StyledP>
+      <p>プライベートレポジトリ数</p>
+      <StyledP>{userData.private_gists}</StyledP>
     </Container>
   );
 }

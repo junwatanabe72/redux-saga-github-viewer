@@ -1,17 +1,10 @@
 import { ADD_USER } from '../actions/index';
 
-const initialState = {
-  name: '',
-  email: '',
-  profileUrl: '',
-};
-
-export default function UserReducer(state = initialState, action) {
+export default function UserReducer(state = {}, action) {
   const { data } = action.payload || {};
   switch (action.type) {
     case ADD_USER: {
-      console.log(data);
-      state = { ...state, name: data.login, email: data.email, profileUrl: data.avatar_url };
+      state = { ...data };
       return state;
     }
     default: {
