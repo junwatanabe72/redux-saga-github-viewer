@@ -1,6 +1,5 @@
 import axios from 'axios';
-// const TOKEN = process.env.REACT_APP_DEV_API_KEY;
-const TOKEN = API_KEY;
+const TOKEN = process.env.API_KEY;
 const userName = 'junwatanabe72';
 const client = axios.create({
   baseURL: 'https://api.github.com',
