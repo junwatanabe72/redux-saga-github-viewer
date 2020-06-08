@@ -15,7 +15,7 @@ function Profile({ userData, getUser }) {
     return function cleanup() {
       document.removeEventListener('load', getUser());
     };
-  }, [userData]);
+  }, []);
   //saga
   return (
     <Container>

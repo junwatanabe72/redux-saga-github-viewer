@@ -19,23 +19,28 @@ export function* getIssueAsync(action) {
 
 export function* postIssueAsync(action) {
   const { data } = yield call(postAxios, action.payload);
-  if (data.status === 201) {
+
+  if (data !== undefined) {
     yield toast.success('投稿に成功しました。', options);
+    yield call(getIssueAsync, action.payload);
+    return;
   } else {
     yield toast.error('投稿に失敗しました。', options);
+    return;
   }
-  return;
 }
 
 export function* putIssueAsync(action) {
   const { data } = yield call(putAxios, action.payload);
-  console.log(data.status);
-  if (data.status === 200) {
+  console.log(data);
+  if (data !== undefined) {
     yield toast.success('更新に成功しました。', options);
+    yield call(getIssueAsync, action.payload);
+    return;
   } else {
     yield toast.error('更新に失敗しました。', options);
+    return;
   }
-  return;
 }
 
 export function* getUserAsync() {
