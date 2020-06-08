@@ -1,9 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import LinkButton from '../../atoms/LinkButton';
+import { media } from '../../../utils/style-utils';
 
 const Container = styled.ul`
-  display: flex;
+  display: none;
+  ${media.handheld575`
+    display: flex;
+  `}
 `;
 const StyledList = styled.li`
   margin: 8px;

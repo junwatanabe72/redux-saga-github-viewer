@@ -3,11 +3,14 @@ import styled from 'styled-components';
 import IssueButtons from './IssueButtons';
 import Logo from '../../../atoms/Logo';
 import Input from '../../../atoms/Input';
+import { media } from '../../../../utils/style-utils';
 
 const Container = styled.div`
-  display: flex;
-  padding: 16px;
+  padding: 8px;
   align-items: center;
+  ${media.handheld575`
+    display: flex;
+  `}
 `;
 
 function IssueFunction({
@@ -22,7 +25,7 @@ function IssueFunction({
 }) {
   return (
     <Container>
-      <Logo name={'Issue'} fontsize={'1.5'} />
+      <Logo name={'Issue'} fontsize={'1.'} />
       <Input placeHolder={'issue名で検索'} propsFunction={propsFunction} />
       <IssueButtons
         checkedObject={checkedObject}

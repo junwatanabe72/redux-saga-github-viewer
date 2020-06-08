@@ -9,11 +9,10 @@ export const media = {
   `,
   handheld575: (...args) => css`
     @media (min-width: 575px) {
-      //375px未満
+      //575px以上
       ${css(...args)};
     }
   `,
 };
 //575:max-width
-//header issue pull dismiss
 //issuefunction issue bar button flex =>  column

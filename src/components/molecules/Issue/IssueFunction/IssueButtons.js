@@ -5,6 +5,7 @@ import Button from '../../../atoms/Button';
 
 const Container = styled.div`
   display: flex;
+  margin-left: 4px;
 `;
 
 function IssueButtons({

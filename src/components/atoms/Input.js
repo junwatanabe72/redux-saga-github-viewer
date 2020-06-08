@@ -3,7 +3,8 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
-  padding: 8px 16px;
+  margin-left: 4px;
+  padding: 12px 0px;
 `;
 const Frame = styled.div`
   border-radius: 6px;
