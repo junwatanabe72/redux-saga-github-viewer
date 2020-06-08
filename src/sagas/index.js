@@ -19,7 +19,7 @@ export function* getIssueAsync(action) {
 
 export function* postIssueAsync(action) {
   const { data } = yield call(postAxios, action.payload);
-
+  console.log(data);
   if (data !== undefined) {
     yield toast.success('投稿に成功しました。', options);
     yield call(getIssueAsync, action.payload);
@@ -31,14 +31,14 @@ export function* postIssueAsync(action) {
 }
 
 export function* putIssueAsync(action) {
-  const { data } = yield call(putAxios, action.payload);
-  console.log(data);
-  if (data !== undefined) {
-    yield toast.success('更新に成功しました。', options);
-    yield call(getIssueAsync, action.payload);
+  const response = yield call(putAxios, action.payload);
+
+  if (response === undefined) {
+    yield toast.error('更新に失敗しました。', options);
     return;
   } else {
-    yield toast.error('更新に失敗しました。', options);
+    yield toast.success('更新に成功しました。', options);
+    yield call(getIssueAsync, action.payload);
     return;
   }
 }
@@ -57,5 +57,3 @@ export default function* rootSaga() {
     yield takeLatest(USER_REQUESTED, getUserAsync),
   ]);
 }
-
-//

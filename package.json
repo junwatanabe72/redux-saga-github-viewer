@@ -1,6 +1,5 @@
 {
   "name": "redux-github-viewer",
-  "homepage": "https://junwatanabe72.github.io/redux-github-viewer/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

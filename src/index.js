@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import App from './App';
+import { createGlobalStyle } from 'styled-components';
+import reducer from './reducers/Combine';
 import mySaga from './sagas/index';
 import Toastify from './utils/Toastify';
-
-import { createGlobalStyle } from 'styled-components';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
-import reducer from './reducers/Combine';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -47,11 +46,11 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const sagaMiddleware = createSagaMiddleware();
-
-/* eslint-disable no-underscore-dangle */
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 
+//saga
 sagaMiddleware.run(mySaga);
+//saga
 
 ReactDOM.render(
   <React.StrictMode>

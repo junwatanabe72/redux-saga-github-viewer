@@ -26,12 +26,14 @@ function TableData({ value, modalPush, modalPop, propsFunction, checkedAll, putI
     modalPush(<ModalUpdate key={1} modalPop={modalPop} Value={value} putIssue={putIssue} />);
   const fixedCreateValue = value.created_at.replace(regex, '');
   const fixedUpdateValue = value.updated_at.replace(regex, '');
-
+  const stayOnclick = (e) => e.stopPropagation();
   return (
     <StyledTr>
       <TableDataCheckBoxCell value={value} propsFunction={propsFunction} checkedAll={checkedAll} />
       <StyledTd onClick={_modalPush}>
-        <a href={value.html_url}>{value.title}</a>
+        <a onClick={stayOnclick} href={value.html_url}>
+          {value.title}
+        </a>
       </StyledTd>
       <StyledTd onClick={_modalPush}>{value.state}</StyledTd>
       <StyledTd onClick={_modalPush}>{value.user.login}</StyledTd>

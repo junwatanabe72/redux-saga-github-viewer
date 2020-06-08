@@ -14,5 +14,3 @@ export const media = {
     }
   `,
 };
-//575:max-width
-//issuefunction issue bar button flex =>  column

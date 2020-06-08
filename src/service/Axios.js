@@ -38,19 +38,17 @@ export async function putAxios(data) {
       state: newData[key].state,
     };
     try {
-      const data = await client.patch(`/repos/junwatanabe72/linux/issues/` + id, queries);
-      return { data };
+      await client.patch(`/repos/junwatanabe72/linux/issues/` + id, queries);
     } catch (e) {
       return { e };
     }
   }
-  return;
+  return 1;
 }
 
 export async function getUserAxios() {
   try {
     const data = await client.get(`/users/junwatanabe72`);
-    // console.log(data);
     return { data };
   } catch (e) {
     return { e };

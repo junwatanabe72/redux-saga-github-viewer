@@ -25,12 +25,29 @@ function IssueButtons({
   for (let key in newData) {
     newData[key].state = 'close';
   }
-  const _closeIssue = () => putIssue(checkedAll ? newData : checkedObject);
+  // const _closeIssue = () => putIssue(checkedAll ? newData : checkedObject);
+
+  const _confirmedPutIssue = async function confirmedPutIssue() {
+    if (await window.confirm('削除しますか')) {
+      if (checkedAll) {
+        putIssue(newData);
+        return;
+      }
+      if (checkedObject.length !== 0) {
+        putIssue(checkedObject);
+        return;
+      }
+      await window.alert('削除するissueを選択してください');
+      return;
+    } else {
+      return;
+    }
+  };
 
   return (
     <Container>
       <Button ButtonName={'New'} type={'primary'} propsFunction={_modalPush} />
-      <Button ButtonName={'Delete'} type={'danger'} propsFunction={_closeIssue} />
+      <Button ButtonName={'Delete'} type={'danger'} propsFunction={_confirmedPutIssue} />
     </Container>
   );
 }
