@@ -19,7 +19,6 @@ export function* getIssueAsync(action) {
 
 export function* postIssueAsync(action) {
   const { data } = yield call(postAxios, action.payload);
-  console.log(data);
   if (data !== undefined) {
     yield toast.success('投稿に成功しました。', options);
     yield call(getIssueAsync, action.payload);

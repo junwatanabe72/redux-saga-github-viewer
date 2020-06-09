@@ -14,7 +14,7 @@ library.add(fab, fas, far);
 function App() {
   return (
     <div className="App">
-      <Router basename="/redux-github-viewer">
+      <Router>
         <Header />
         <Body />
         <Modal />

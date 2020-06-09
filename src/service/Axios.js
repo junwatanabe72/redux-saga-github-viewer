@@ -1,17 +1,8 @@
-import axios from 'axios';
-const TOKEN = process.env.API_KEY;
-const userName = 'junwatanabe72';
-const client = axios.create({
-  baseURL: 'https://api.github.com',
-  auth: {
-    username: userName,
-    password: TOKEN,
-  },
-});
+import { client, issueURL, issuePutURL, userURL } from '../utils/AxiosConf';
 
 export async function getAxios() {
   try {
-    const data = await client.get(`/repos/junwatanabe72/linux/issues`);
+    const data = await client.get(`${issueURL}`);
     return { data };
   } catch (e) {
     return { e };
@@ -21,7 +12,7 @@ export async function getAxios() {
 export async function postAxios(data) {
   const queries = { title: data.issue.title, body: data.issue.description };
   try {
-    const data = await client.post(`/repos/junwatanabe72/linux/issues`, queries);
+    const data = await client.post(`${issueURL}`, queries);
     return { data };
   } catch (e) {
     return { e };
@@ -38,7 +29,7 @@ export async function putAxios(data) {
       state: newData[key].state,
     };
     try {
-      await client.patch(`/repos/junwatanabe72/linux/issues/` + id, queries);
+      await client.patch(`${issuePutURL}` + id, queries);
     } catch (e) {
       return { e };
     }
@@ -48,7 +39,7 @@ export async function putAxios(data) {
 
 export async function getUserAxios() {
   try {
-    const data = await client.get(`/users/junwatanabe72`);
+    const data = await client.get(`${userURL}`);
     return { data };
   } catch (e) {
     return { e };
