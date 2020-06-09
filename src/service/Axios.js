@@ -29,9 +29,12 @@ export async function putAxios(data) {
       state: newData[key].state,
     };
     try {
-      await client.patch(`${issuePutURL}` + id, queries);
+      const data = await client.patch(`${issuePutURL}` + id, queries);
+      if (!data) {
+        return;
+      }
     } catch (e) {
-      return { e };
+      return;
     }
   }
   return 1;

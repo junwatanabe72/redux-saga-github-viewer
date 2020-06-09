@@ -31,8 +31,7 @@ export function* postIssueAsync(action) {
 
 export function* putIssueAsync(action) {
   const response = yield call(putAxios, action.payload);
-
-  if (response === undefined) {
+  if (!response) {
     yield toast.error('更新に失敗しました。', options);
     return;
   } else {
@@ -41,6 +40,18 @@ export function* putIssueAsync(action) {
     return;
   }
 }
+// export function* putIssueAsync(action) {
+//   const response = yield call(putAxios, action.payload);
+
+//   if (response === undefined) {
+//     yield toast.error('更新に失敗しました。', options);
+//     return;
+//   } else {
+//     yield toast.success('更新に成功しました。', options);
+//     yield call(getIssueAsync, action.payload);
+//     return;
+//   }
+// }
 
 export function* getUserAsync() {
   const { data } = yield call(getUserAxios);
