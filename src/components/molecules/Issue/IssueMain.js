@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 function IssueMain({
-  propsFunction,
+  onChange,
   serachWord,
   CheckedOrCanceledAll,
   checkedAll,
@@ -21,7 +21,7 @@ function IssueMain({
   return (
     <Container>
       <IssueTable
-        propsFunction={propsFunction}
+        onChange={onChange}
         serachWord={serachWord}
         CheckedOrCanceledAll={CheckedOrCanceledAll}
         checkedAll={checkedAll}

@@ -15,11 +15,11 @@ const StyledTh = styled.th`
   border-right: solid 1px white;
 `;
 
-function TableHead({ propsFunction }) {
+function TableHead({ onChange }) {
   return (
     <thead>
       <StyledTr>
-        <TableHeadCheckBoxCell propsFunction={propsFunction} />
+        <TableHeadCheckBoxCell onChange={onChange} />
         <StyledTh>{''}</StyledTh>
         <StyledTh>{'ステータス'}</StyledTh>
         <StyledTh>{'作成者'}</StyledTh>

@@ -44,8 +44,8 @@ function IssueButtons({
 
   return (
     <Container>
-      <Button ButtonName={'New'} type={'primary'} propsFunction={_modalPush} />
-      <Button ButtonName={'Delete'} type={'danger'} propsFunction={_confirmedPutIssue} />
+      <Button ButtonName={'New'} type={'primary'} onChange={_modalPush} />
+      <Button ButtonName={'Delete'} type={'danger'} onChange={_confirmedPutIssue} />
     </Container>
   );
 }

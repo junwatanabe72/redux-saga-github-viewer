@@ -10,7 +10,7 @@ const StyledTable = styled.table`
 `;
 
 function IssueTable({
-  propsFunction,
+  onChange,
   serachWord,
   CheckedOrCanceledAll,
   checkedAll,
@@ -21,9 +21,9 @@ function IssueTable({
 }) {
   return (
     <StyledTable>
-      <TableHead propsFunction={CheckedOrCanceledAll} />
+      <TableHead onChange={CheckedOrCanceledAll} />
       <TableBody
-        propsFunction={propsFunction}
+        onChange={onChange}
         serachWord={serachWord}
         checkedAll={checkedAll}
         data={data}

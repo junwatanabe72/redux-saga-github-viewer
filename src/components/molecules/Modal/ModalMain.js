@@ -101,7 +101,7 @@ function ModalMain({ modalPop, postIssue }) {
           <Input
             placeHolder={'タイトルを入力してください。'}
             value={iss}
-            propsFunction={onChangeIssue}
+            onChange={onChangeIssue}
           />
         </StyledInputTitle>
         <StyledInputDes>
@@ -109,14 +109,14 @@ function ModalMain({ modalPop, postIssue }) {
           <TextArea
             placeHolder={'説明を入力してください。'}
             value={des}
-            propsFunction={onChangeDescription}
+            onChange={onChangeDescription}
           />
         </StyledInputDes>
       </StyledInput>
       <Blank>{vaildMessege}</Blank>
       <ButtonSet>
-        <Button ButtonName={'作成'} type={'primary'} propsFunction={onSubmit} />
-        <Button ButtonName={'閉じる'} propsFunction={modalPop} />
+        <Button ButtonName={'作成'} type={'primary'} onChange={onSubmit} />
+        <Button ButtonName={'閉じる'} onChange={modalPop} />
       </ButtonSet>
     </Container>
   );

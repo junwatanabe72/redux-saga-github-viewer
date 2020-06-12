@@ -8,19 +8,19 @@ const StyledTh = styled.th`
   border-right: solid 1px white;
 `;
 
-function TableDataCheckBoxCell({ value, propsFunction, checkedAll }) {
+function TableDataCheckBoxCell({ value, onChange, checkedAll }) {
   const [Checked, setChecked] = useState(false);
   const closeValue = { ...value, state: 'close' };
   const changedCheacked = () => {
     setChecked(!Checked);
   };
 
-  const _propsFunction = () => {
-    propsFunction(closeValue, Checked);
+  const _onChange = () => {
+    onChange(closeValue, Checked);
     changedCheacked();
   };
-  const _propsFunctionIre = () => {
-    propsFunction(closeValue, !Checked);
+  const _onChangeIre = () => {
+    onChange(closeValue, !Checked);
     changedCheacked();
   };
 
@@ -30,12 +30,12 @@ function TableDataCheckBoxCell({ value, propsFunction, checkedAll }) {
     if (Checked) {
       changedCheacked();
     }
-    Input = <input type="checkbox" onClick={_propsFunction} />;
+    Input = <input type="checkbox" onClick={_onChange} />;
   } else {
     if (Checked) {
-      Input = <input type="checkbox" onClick={_propsFunctionIre} />;
+      Input = <input type="checkbox" onClick={_onChangeIre} />;
     } else {
-      Input = <input type="checkbox" checked={checkedAll} onClick={_propsFunctionIre} />;
+      Input = <input type="checkbox" checked={checkedAll} onClick={_onChangeIre} />;
     }
   }
 

@@ -117,11 +117,11 @@ function ModalUpdate({ modalPop, Value, putIssue }) {
       <StyledInput>
         <StyledInputTitle>
           <StyledLabel>タイトル</StyledLabel>
-          <Input placeHolder={Value.title} value={iss} propsFunction={onChangeIssue} />
+          <Input placeHolder={Value.title} value={iss} onChange={onChangeIssue} />
         </StyledInputTitle>
         <StyledInputDes>
           <StyledLabel>説明</StyledLabel>
-          <TextArea placeHolder={Value.body} value={des} propsFunction={onChangeDescription} />
+          <TextArea placeHolder={Value.body} value={des} onChange={onChangeDescription} />
         </StyledInputDes>
       </StyledInput>
       <StyledSelect>
@@ -133,8 +133,8 @@ function ModalUpdate({ modalPop, Value, putIssue }) {
       </StyledSelect>
       <Blank>{vaildMessege}</Blank>
       <ButtonSet>
-        <Button ButtonName={'更新'} type={'primary'} propsFunction={onSubmit} />
-        <Button ButtonName={'閉じる'} propsFunction={modalPop} />
+        <Button ButtonName={'更新'} type={'primary'} onChange={onSubmit} />
+        <Button ButtonName={'閉じる'} onChange={modalPop} />
       </ButtonSet>
     </Container>
   );

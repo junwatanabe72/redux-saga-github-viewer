@@ -59,7 +59,7 @@ function Issue({ data, modalPush, modalPop, getIssue, postIssue, putIssue }) {
     <Container>
       <IssueFunction
         checkedObject={checkedObject}
-        propsFunction={InputWord}
+        onChange={InputWord}
         checkedAll={checkedAll}
         data={data}
         modalPush={modalPush}
@@ -69,7 +69,7 @@ function Issue({ data, modalPush, modalPop, getIssue, postIssue, putIssue }) {
       />
 
       <IssueMain
-        propsFunction={CheckedOrCanceled}
+        onChange={CheckedOrCanceled}
         serachWord={serachWord}
         CheckedOrCanceledAll={CheckedOrCanceledAll}
         checkedAll={checkedAll}

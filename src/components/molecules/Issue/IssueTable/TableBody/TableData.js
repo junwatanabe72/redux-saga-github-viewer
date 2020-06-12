@@ -21,7 +21,7 @@ const StyledTd = styled.td`
 
 const regex = /T[0-9]+:[0-9]+:[0-9]+[A-Z]/;
 
-function TableData({ value, modalPush, modalPop, propsFunction, checkedAll, putIssue }) {
+function TableData({ value, modalPush, modalPop, onChange, checkedAll, putIssue }) {
   const _modalPush = () =>
     modalPush(<ModalUpdate key={1} modalPop={modalPop} Value={value} putIssue={putIssue} />);
   const fixedCreateValue = value.created_at.replace(regex, '');
@@ -29,7 +29,7 @@ function TableData({ value, modalPush, modalPop, propsFunction, checkedAll, putI
   const stayOnclick = (e) => e.stopPropagation();
   return (
     <StyledTr>
-      <TableDataCheckBoxCell value={value} propsFunction={propsFunction} checkedAll={checkedAll} />
+      <TableDataCheckBoxCell value={value} onChange={onChange} checkedAll={checkedAll} />
       <StyledTd onClick={_modalPush}>
         <a onClick={stayOnclick} href={value.html_url}>
           {value.title}

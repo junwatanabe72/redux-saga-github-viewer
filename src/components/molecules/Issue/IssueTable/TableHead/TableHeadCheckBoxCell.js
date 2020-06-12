@@ -9,10 +9,10 @@ const StyledTh = styled.th`
   border-right: solid 1px white;
 `;
 
-function TableHeadCheckBoxCell({ propsFunction }) {
+function TableHeadCheckBoxCell({ onChange }) {
   return (
     <StyledTh>
-      <input type="checkbox" onChange={propsFunction} />
+      <input type="checkbox" onChange={onChange} />
     </StyledTh>
   );
 }

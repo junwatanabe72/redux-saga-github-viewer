@@ -19,7 +19,7 @@ const Styleddiv = styled.div`
 
 function IssueFunction({
   checkedObject,
-  propsFunction,
+  onChange,
   checkedAll,
   data,
   modalPush,
@@ -32,7 +32,7 @@ function IssueFunction({
       <Styleddiv>
         <Logo name={'Issue'} fontsize={'1.'} />
       </Styleddiv>
-      <Input placeHolder={'issue名で検索'} propsFunction={propsFunction} />
+      <Input placeHolder={'issue名で検索'} onChange={onChange} />
       <IssueButtons
         checkedObject={checkedObject}
         checkedAll={checkedAll}
