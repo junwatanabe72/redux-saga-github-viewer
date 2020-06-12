@@ -48,9 +48,9 @@ function Issue({ data, modalPush, modalPop, getIssue, postIssue, putIssue }) {
 
   //saga
   useEffect(() => {
-    document.addEventListener('load', getIssue());
+    getIssue();
     return function cleanup() {
-      document.removeEventListener('load', getIssue());
+      getIssue();
     };
   }, []);
   //saga

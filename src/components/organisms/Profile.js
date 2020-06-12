@@ -11,9 +11,9 @@ const Container = styled.div`
 function Profile({ userData, getUser }) {
   //saga
   useEffect(() => {
-    document.addEventListener('load', getUser());
+    getUser();
     return function cleanup() {
-      document.removeEventListener('load', getUser());
+      getUser();
     };
   }, []);
   //saga

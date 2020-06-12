@@ -27,6 +27,10 @@ const StyledInputDes = styled.div`
   padding: 16px;
 `;
 
+const StyledLabel = styled.label`
+  padding: 12px 8px;
+`;
+
 const Blank = styled.div`
   padding: 16px;
   min-height: 50px;
@@ -93,17 +97,17 @@ function ModalMain({ modalPop, postIssue }) {
       </StyledLogo>
       <StyledInput>
         <StyledInputTitle>
-          <label>タイトル</label>
+          <StyledLabel>タイトル</StyledLabel>
           <Input
-            PlaceHolder={'タイトルを入力してください。'}
+            placeHolder={'タイトルを入力してください。'}
             value={iss}
             propsFunction={onChangeIssue}
           />
         </StyledInputTitle>
         <StyledInputDes>
-          <label>説明</label>
+          <StyledLabel>説明</StyledLabel>
           <TextArea
-            PlaceHolder={'説明を入力してください。'}
+            placeHolder={'説明を入力してください。'}
             value={des}
             propsFunction={onChangeDescription}
           />

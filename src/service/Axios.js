@@ -1,8 +1,9 @@
 import { client, issueURL, issuePutURL, userURL } from '../utils/AxiosConf';
 
+//fix
 export async function getAxios() {
   try {
-    const data = await client.get(`${issueURL}`);
+    const data = await client.get(issueURL);
     return { data };
   } catch (e) {
     return { e };
@@ -12,7 +13,7 @@ export async function getAxios() {
 export async function postAxios(data) {
   const queries = { title: data.issue.title, body: data.issue.description };
   try {
-    const data = await client.post(`${issueURL}`, queries);
+    const data = await client.post(issueURL, queries);
     return { data };
   } catch (e) {
     return { e };
@@ -29,7 +30,7 @@ export async function putAxios(data) {
       state: newData[key].state,
     };
     try {
-      const data = await client.patch(`${issuePutURL}` + id, queries);
+      const data = await client.patch(issuePutURL + id, queries);
       if (!data) {
         return;
       }
@@ -42,7 +43,7 @@ export async function putAxios(data) {
 
 export async function getUserAxios() {
   try {
-    const data = await client.get(`${userURL}`);
+    const data = await client.get(userURL);
     return { data };
   } catch (e) {
     return { e };

@@ -27,6 +27,10 @@ const StyledInputDes = styled.div`
   padding: 16px;
 `;
 
+const StyledLabel = styled.label`
+  padding: 12px 8px;
+`;
+
 const Blank = styled.div`
   padding: 16px;
   min-height: 50px;
@@ -57,7 +61,7 @@ const StyledSelect = styled.div`
   padding: 16px;
 `;
 const StyledSelectBar = styled.select`
-  margin: 16px;
+  margin: 8px;
   display: block;
   width: 64px;
 `;
@@ -112,16 +116,16 @@ function ModalUpdate({ modalPop, Value, putIssue }) {
       </StyledLogo>
       <StyledInput>
         <StyledInputTitle>
-          <label>タイトル</label>
+          <StyledLabel>タイトル</StyledLabel>
           <Input placeHolder={Value.title} value={iss} propsFunction={onChangeIssue} />
         </StyledInputTitle>
         <StyledInputDes>
-          <label>説明</label>
+          <StyledLabel>説明</StyledLabel>
           <TextArea placeHolder={Value.body} value={des} propsFunction={onChangeDescription} />
         </StyledInputDes>
       </StyledInput>
       <StyledSelect>
-        <label>ステータス</label>
+        <StyledLabel>ステータス</StyledLabel>
         <StyledSelectBar onChange={onChangeStatus}>
           <option>{Value.state}</option>
           <option>{oppositedStatus}</option>

@@ -20,26 +20,24 @@ function IssueButtons({
   const _modalPush = () =>
     modalPush(<ModalMain key={2} postIssue={postIssue} modalPop={modalPop} />);
 
-  const List = JSON.parse(JSON.stringify(data));
-  const newData = { ...List };
-  for (let key in newData) {
-    newData[key].state = 'close';
-  }
-  // const _closeIssue = () => putIssue(checkedAll ? newData : checkedObject);
-
   const _confirmedPutIssue = async function confirmedPutIssue() {
-    if (await window.confirm('削除しますか')) {
-      if (checkedAll) {
-        putIssue(newData);
-        return;
+    if (!(await window.confirm('削除しますか'))) {
+      return;
+    }
+
+    if (checkedAll) {
+      for (let key in data) {
+        data[key].state = 'close';
       }
-      if (checkedObject.length !== 0) {
-        putIssue(checkedObject);
-        return;
-      }
-      await window.alert('削除するissueを選択してください');
+      putIssue(data);
+      return;
+    }
+
+    if (checkedObject.length !== 0) {
+      putIssue(checkedObject);
       return;
     } else {
+      await window.alert('削除するissueを選択してください');
       return;
     }
   };

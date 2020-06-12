@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import HeaderModal from './HeaderModal';
+import DropDownMenu from './DropDownMenu';
 import ComponentFontAwesomeIcon from '../../atoms/FontAwesomeIcon';
 
 const Container = styled.div`
@@ -42,7 +42,7 @@ function HeaderMenu({ modalIsOpen, workModal }) {
     <Container ref={modalRef} onClick={workModal}>
       <ComponentFontAwesomeIcon head={'fas'} tail={'bars'} />
       <PositionAbsolute modalIsOpen={modalIsOpen}>
-        <HeaderModal />
+        <DropDownMenu />
       </PositionAbsolute>
     </Container>
   );

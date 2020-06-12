@@ -11,7 +11,7 @@ const StyledList = styled.li`
   }
 `;
 
-function HeaderModal() {
+function DropDownMenu() {
   return (
     <Container>
       <StyledList>
@@ -54,4 +54,4 @@ function HeaderModal() {
   );
 }
 
-export default HeaderModal;
+export default DropDownMenu;

@@ -40,23 +40,17 @@ export function* putIssueAsync(action) {
     return;
   }
 }
-// export function* putIssueAsync(action) {
-//   const response = yield call(putAxios, action.payload);
 
-//   if (response === undefined) {
-//     yield toast.error('更新に失敗しました。', options);
-//     return;
-//   } else {
-//     yield toast.success('更新に成功しました。', options);
-//     yield call(getIssueAsync, action.payload);
-//     return;
-//   }
-// }
-
+//fix toast出す
 export function* getUserAsync() {
   const { data } = yield call(getUserAxios);
-  yield put(addUser(data.data));
-  return;
+  if (data !== undefined) {
+    yield put(addUser(data.data));
+    return;
+  } else {
+    yield toast.error('取得に失敗しました。', options);
+    return;
+  }
 }
 
 export default function* rootSaga() {

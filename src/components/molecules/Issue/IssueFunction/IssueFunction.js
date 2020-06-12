@@ -13,6 +13,10 @@ const Container = styled.div`
   `}
 `;
 
+const Styleddiv = styled.div`
+  margin-left: 6px;
+`;
+
 function IssueFunction({
   checkedObject,
   propsFunction,
@@ -25,7 +29,9 @@ function IssueFunction({
 }) {
   return (
     <Container>
-      <Logo name={'Issue'} fontsize={'1.'} />
+      <Styleddiv>
+        <Logo name={'Issue'} fontsize={'1.'} />
+      </Styleddiv>
       <Input placeHolder={'issue名で検索'} propsFunction={propsFunction} />
       <IssueButtons
         checkedObject={checkedObject}
