@@ -28,7 +28,7 @@ function TableDataCheckBoxCell({ value, onChange, checkedAll }) {
 
   if (!checkedAll) {
     if (Checked) {
-      changedCheacked();
+      Input = <input type="checkbox" onClick={_onChangeIre} />;
     }
     Input = <input type="checkbox" onClick={_onChange} />;
   } else {
