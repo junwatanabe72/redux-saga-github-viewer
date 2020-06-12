@@ -5,7 +5,8 @@ import styled from 'styled-components';
 const StyledLink = styled(Link)`
   display: inline-block;
   width: 100%;
-  padding: 4px 0;
+  line-height: 30px;
+  height: ${(props) => props.height}px;
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.color};
   &:hover {
@@ -14,7 +15,15 @@ const StyledLink = styled(Link)`
   }
 `;
 
-function LinkButton({ to, size, color = 'black', hoverbackgroundcolor, hovercolor, value }) {
+function LinkButton({
+  height,
+  to,
+  size,
+  color = 'black',
+  hoverbackgroundcolor,
+  hovercolor,
+  value,
+}) {
   return (
     <StyledLink
       size={size}
@@ -22,6 +31,7 @@ function LinkButton({ to, size, color = 'black', hoverbackgroundcolor, hovercolo
       color={color}
       hoverbackgroundcolor={hoverbackgroundcolor}
       hovercolor={hovercolor}
+      height={height}
     >
       {value}
     </StyledLink>

@@ -4,28 +4,39 @@ import LinkButton from '../../atoms/LinkButton';
 
 const Container = styled.ul``;
 
-const StyledList = styled.li`
+const StyledFirstList = styled.li`
   width: 180px;
-  height: 30px;
-  margin: 8px 4px;
+  margin-top: 4px;
   }
 `;
-
+const StyledList = styled.li`
+  width: 180px;
+  }
+`;
+const StyledLastList = styled.li`
+  width: 180px;
+  margin-bottom: 4px;
+  }
+`;
+const heightPx = 30;
+const fontSize = 13;
 function DropDownMenu() {
   return (
     <Container>
-      <StyledList>
+      <StyledFirstList>
         <LinkButton
-          size={'13'}
+          size={fontSize}
+          height={heightPx}
           to={'/'}
           value={'Top'}
           hovercolor={'white'}
           hoverbackgroundcolor={'#0066ff'}
         />
-      </StyledList>
+      </StyledFirstList>
       <StyledList>
         <LinkButton
-          size={'13'}
+          size={fontSize}
+          height={heightPx}
           to={'profile'}
           value={'Your Profile'}
           hovercolor={'white'}
@@ -34,22 +45,24 @@ function DropDownMenu() {
       </StyledList>
       <StyledList>
         <LinkButton
-          size={'13'}
+          size={fontSize}
+          height={heightPx}
           to={'Issue'}
           value={'Issue'}
           hovercolor={'white'}
           hoverbackgroundcolor={'#0066ff'}
         />
       </StyledList>
-      <StyledList>
+      <StyledLastList>
         <LinkButton
-          size={'13'}
+          size={fontSize}
+          height={heightPx}
           to={'PullRequest'}
           value={'Pull Request'}
           hovercolor={'white'}
           hoverbackgroundcolor={'#0066ff'}
         />
-      </StyledList>
+      </StyledLastList>
     </Container>
   );
 }
