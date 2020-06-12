@@ -80,13 +80,13 @@ function ModalUpdate({ modalPop, Value, putIssue }) {
   const oppositedStatus = Value.state === status.open ? status.close : status.open;
 
   const onSubmit = () => {
-    const data = { id: { ...Value, title: iss, body: des, state: sta } };
+    const data = { ...Value, title: iss, body: des, state: sta };
 
-    if (!data.id.title) {
+    if (!data.title) {
       setMessage(errorMessage.title);
       return;
     }
-    if (!data.id.body) {
+    if (!data.body) {
       setMessage(errorMessage.description);
       return;
     }

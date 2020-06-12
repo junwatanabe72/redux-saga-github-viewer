@@ -28,13 +28,18 @@ function IssueButtons({
     if (checkedAll) {
       for (let key in data) {
         data[key].state = 'close';
+        putIssue(data[key]);
       }
-      putIssue(data);
+
       return;
     }
 
     if (checkedObject.length !== 0) {
-      putIssue(checkedObject);
+      for (let key in checkedObject) {
+        console.log(checkedObject[key]);
+        checkedObject[key].state = 'close';
+        putIssue(checkedObject[key]);
+      }
       return;
     } else {
       await window.alert('削除するissueを選択してください');

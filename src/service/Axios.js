@@ -22,23 +22,18 @@ export async function postAxios(data) {
 
 export async function putAxios(data) {
   const newData = data.issue;
-  for (let key in newData) {
-    const id = newData[key].number;
-    const queries = {
-      title: newData[key].title,
-      body: newData[key].body,
-      state: newData[key].state,
-    };
-    try {
-      const data = await client.patch(issuePutURL + id, queries);
-      if (!data) {
-        return;
-      }
-    } catch (e) {
-      return;
-    }
+  const id = newData.number;
+  const queries = {
+    title: newData.title,
+    body: newData.body,
+    state: newData.state,
+  };
+  try {
+    const data = await client.patch(issuePutURL + id, queries);
+    return { data };
+  } catch (e) {
+    return;
   }
-  return 1;
 }
 
 export async function getUserAxios() {
@@ -49,3 +44,24 @@ export async function getUserAxios() {
     return { e };
   }
 }
+
+// export async function putAxios(data) {
+//   const newData = data.issue;
+//   for (let key in newData) {
+//     const id = newData[key].number;
+//     const queries = {
+//       title: newData[key].title,
+//       body: newData[key].body,
+//       state: newData[key].state,
+//     };
+//     try {
+//       const data = await client.patch(issuePutURL + id, queries);
+//       if (!data) {
+//         return;
+//       }
+//     } catch (e) {
+//       return;
+//     }
+//   }
+//   return 1;
+// }
