@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { createGlobalStyle } from 'styled-components';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
 import App from './App';
-
-import * as serviceWorker from './serviceWorker';
+import { createGlobalStyle } from 'styled-components';
 import reducer from './reducers/Combine';
+import mySaga from './sagas/index';
+import Toastify from './utils/Toastify';
+import * as serviceWorker from './serviceWorker';
 
 const GlobalStyle = createGlobalStyle`
   html {
@@ -32,7 +35,7 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
     text-decoration: none;
-    color: black;
+    color: blue;
   }
   textarea{
     min-height: 150px;
@@ -42,17 +45,18 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-/* eslint-disable no-underscore-dangle */
-const store = createStore(
-  reducer /* preloadedState, */,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-/* eslint-enable */
+const sagaMiddleware = createSagaMiddleware();
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+
+//saga
+sagaMiddleware.run(mySaga);
+//saga
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
     <Provider store={store}>
+      <Toastify />
       <App />
     </Provider>
   </React.StrictMode>,

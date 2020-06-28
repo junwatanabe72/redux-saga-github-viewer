@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import TableHeadCheckBoxCell from './TableHeadCheckBoxCell';
-import TableHeadCell from './TableHeadCell';
 
 const StyledTr = styled.tr`
   border-left: solid 1px #ccc;
@@ -9,16 +8,23 @@ const StyledTr = styled.tr`
   text-align: left;
 `;
 
-function TableHead({ propsFunction }) {
+const StyledTh = styled.th`
+  font-size: 14px;
+  min-width: 148px;
+  border-bottom: solid 1px #ccc;
+  border-right: solid 1px white;
+`;
+
+function TableHead({ onChange }) {
   return (
     <thead>
       <StyledTr>
-        <TableHeadCheckBoxCell propsFunction={propsFunction} />
-        <TableHeadCell value={''} />
-        <TableHeadCell value={'ステータス'} />
-        <TableHeadCell value={'作成者'} />
-        <TableHeadCell value={'作成日付'} />
-        <TableHeadCell value={'更新日付'} />
+        <TableHeadCheckBoxCell onChange={onChange} />
+        <StyledTh>{''}</StyledTh>
+        <StyledTh>{'ステータス'}</StyledTh>
+        <StyledTh>{'作成者'}</StyledTh>
+        <StyledTh>{'作成日付'}</StyledTh>
+        <StyledTh>{'更新日付'}</StyledTh>
       </StyledTr>
     </thead>
   );

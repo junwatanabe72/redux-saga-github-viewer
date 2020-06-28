@@ -4,7 +4,6 @@ import Logo from '../../atoms/Logo';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import TextArea from '../../atoms/TextArea';
-import { createDate } from '../../../utils/dataHelper';
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +25,10 @@ const StyledInputTitle = styled.div`
 `;
 const StyledInputDes = styled.div`
   padding: 16px;
+`;
+
+const StyledLabel = styled.label`
+  padding: 12px 8px;
 `;
 
 const Blank = styled.div`
@@ -54,12 +57,7 @@ const ButtonSet = styled.div`
   justify-content: flex-end;
 `;
 
-const status = {
-  open: 'Open',
-  close: 'Close',
-};
-
-function ModalMain({ addIssue, modalPop }) {
+function ModalMain({ modalPop, postIssue }) {
   const [iss, setIssue] = useState('');
   const [des, setDescription] = useState('');
   const [vaildMessege, setMessage] = useState('');
@@ -67,10 +65,6 @@ function ModalMain({ addIssue, modalPop }) {
     const data = {
       title: iss,
       description: des,
-      status: status.open,
-      createBy: 'junwatanabe',
-      createAt: createDate,
-      updateAt: createDate,
     };
     if (!data.title) {
       setMessage(errorMessage.title);
@@ -81,7 +75,10 @@ function ModalMain({ addIssue, modalPop }) {
       return;
     }
 
-    addIssue(data);
+    //saga
+    postIssue(data);
+    //saga
+
     setIssue('');
     setDescription('');
     modalPop();
@@ -100,26 +97,26 @@ function ModalMain({ addIssue, modalPop }) {
       </StyledLogo>
       <StyledInput>
         <StyledInputTitle>
-          <label>タイトル</label>
+          <StyledLabel>タイトル</StyledLabel>
           <Input
-            PlaceHolder={'タイトルを入力してください。'}
+            placeHolder={'タイトルを入力してください。'}
             value={iss}
-            propsFunction={onChangeIssue}
+            onChange={onChangeIssue}
           />
         </StyledInputTitle>
         <StyledInputDes>
-          <label>説明</label>
+          <StyledLabel>説明</StyledLabel>
           <TextArea
-            PlaceHolder={'説明を入力してください。'}
+            placeHolder={'説明を入力してください。'}
             value={des}
-            propsFunction={onChangeDescription}
+            onChange={onChangeDescription}
           />
         </StyledInputDes>
       </StyledInput>
       <Blank>{vaildMessege}</Blank>
       <ButtonSet>
-        <Button ButtonName={'作成'} type={'primary'} propsFunction={onSubmit} />
-        <Button ButtonName={'閉じる'} propsFunction={modalPop} />
+        <Button ButtonName={'作成'} type={'primary'} onChange={onSubmit} />
+        <Button ButtonName={'閉じる'} onChange={modalPop} />
       </ButtonSet>
     </Container>
   );

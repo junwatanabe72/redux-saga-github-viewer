@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import IssueFunction from '../molecules/Issue/IssueFunction/IssueFunction';
 import IssueMain from '../molecules/Issue/IssueMain';
@@ -8,8 +8,8 @@ const Container = styled.div`
   padding: 16px;
 `;
 
-function Issue({ data, modalPush, modalPop, addIssue, updateIssue, removeIssue }) {
-  const [checkedObject, setChecked] = useState({});
+function Issue({ data, modalPush, modalPop, getIssue, postIssue, putIssue }) {
+  const [checkedObject, setChecked] = useState([]);
   const [serachWord, setWord] = useState('');
   const [checkedAll, setCheckedAll] = useState(false);
   //checkedAll
@@ -46,27 +46,37 @@ function Issue({ data, modalPush, modalPop, addIssue, updateIssue, removeIssue }
     setWord(e.target.value);
   };
 
+  //saga
+  useEffect(() => {
+    getIssue();
+    return function cleanup() {
+      getIssue();
+    };
+  }, []);
+  //saga
+
   return (
     <Container>
       <IssueFunction
         checkedObject={checkedObject}
-        propsFunction={InputWord}
+        onChange={InputWord}
         checkedAll={checkedAll}
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
-        removeIssue={removeIssue}
-        addIssue={addIssue}
+        postIssue={postIssue}
+        putIssue={putIssue}
       />
+
       <IssueMain
-        propsFunction={CheckedOrCanceled}
+        onChange={CheckedOrCanceled}
         serachWord={serachWord}
         CheckedOrCanceledAll={CheckedOrCanceledAll}
         checkedAll={checkedAll}
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
-        updateIssue={updateIssue}
+        putIssue={putIssue}
       />
     </Container>
   );

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const Styledh2 = styled.h2`
   font-size: ${(props) => props.fontsize}rem;
+  margin: 4px;
 `;
 
 function Logo({ name, fontsize }) {

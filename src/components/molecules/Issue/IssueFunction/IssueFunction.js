@@ -3,35 +3,44 @@ import styled from 'styled-components';
 import IssueButtons from './IssueButtons';
 import Logo from '../../../atoms/Logo';
 import Input from '../../../atoms/Input';
+import { media } from '../../../../utils/style-utils';
 
 const Container = styled.div`
-  display: flex;
-  padding: 16px;
+  padding: 8px;
   align-items: center;
+  ${media.handheld575`
+    display: flex;
+  `}
+`;
+
+const Styleddiv = styled.div`
+  margin-left: 6px;
 `;
 
 function IssueFunction({
   checkedObject,
-  propsFunction,
+  onChange,
   checkedAll,
-  addIssue,
-  removeIssue,
   data,
   modalPush,
   modalPop,
+  postIssue,
+  putIssue,
 }) {
   return (
     <Container>
-      <Logo name={'Issue'} fontsize={'1.5'} />
-      <Input placeHolder={'issue名で検索'} propsFunction={propsFunction} />
+      <Styleddiv>
+        <Logo name={'Issue'} fontsize={'1.'} />
+      </Styleddiv>
+      <Input placeHolder={'issue名で検索'} onChange={onChange} />
       <IssueButtons
         checkedObject={checkedObject}
         checkedAll={checkedAll}
-        addIssue={addIssue}
-        removeIssue={removeIssue}
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
+        postIssue={postIssue}
+        putIssue={putIssue}
       />
     </Container>
   );

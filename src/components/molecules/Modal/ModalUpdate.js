@@ -4,7 +4,6 @@ import Logo from '../../atoms/Logo';
 import Button from '../../atoms/Button';
 import Input from '../../atoms/Input';
 import TextArea from '../../atoms/TextArea';
-import { createDate } from '../../../utils/dataHelper';
 
 const Container = styled.div`
   display: flex;
@@ -26,6 +25,10 @@ const StyledInputTitle = styled.div`
 `;
 const StyledInputDes = styled.div`
   padding: 16px;
+`;
+
+const StyledLabel = styled.label`
+  padding: 12px 8px;
 `;
 
 const Blank = styled.div`
@@ -58,45 +61,40 @@ const StyledSelect = styled.div`
   padding: 16px;
 `;
 const StyledSelectBar = styled.select`
-  margin: 16px;
+  margin: 8px;
   display: block;
   width: 64px;
 `;
 
 const status = {
-  open: 'Open',
-  close: 'Close',
+  open: 'open',
+  close: 'close',
 };
 
-function ModalUpdate({ updateIssue, modalPop, Value }) {
+function ModalUpdate({ modalPop, Value, putIssue }) {
   const [iss, setIssue] = useState(Value.title);
-  const [des, setDescription] = useState(Value.description);
-  const [sta, setStatus] = useState(Value.status);
+  const [des, setDescription] = useState(Value.body);
+  const [sta, setStatus] = useState(Value.state);
   const [vaildMessege, setMessage] = useState('');
 
-  const oppositedStatus = Value.status === status.open ? status.close : status.open;
+  const oppositedStatus = Value.state === status.open ? status.close : status.open;
 
   const onSubmit = () => {
-    const data = {
-      title: iss,
-      description: des,
-      status: sta,
-      id: Value.id,
-      createBy: Value.createBy,
-      createAt: Value.createAt,
-      updateAt: createDate,
-    };
+    const data = { ...Value, title: iss, body: des, state: sta };
 
     if (!data.title) {
       setMessage(errorMessage.title);
       return;
     }
-    if (!data.description) {
+    if (!data.body) {
       setMessage(errorMessage.description);
       return;
     }
 
-    updateIssue(data);
+    //saga
+    putIssue(data);
+    //saga
+
     setIssue('');
     setDescription('');
     modalPop();
@@ -118,29 +116,25 @@ function ModalUpdate({ updateIssue, modalPop, Value }) {
       </StyledLogo>
       <StyledInput>
         <StyledInputTitle>
-          <label>タイトル</label>
-          <Input PlaceHolder={Value.title} value={iss} propsFunction={onChangeIssue} />
+          <StyledLabel>タイトル</StyledLabel>
+          <Input placeHolder={Value.title} value={iss} onChange={onChangeIssue} />
         </StyledInputTitle>
         <StyledInputDes>
-          <label>説明</label>
-          <TextArea
-            PlaceHolder={Value.description}
-            value={des}
-            propsFunction={onChangeDescription}
-          />
+          <StyledLabel>説明</StyledLabel>
+          <TextArea placeHolder={Value.body} value={des} onChange={onChangeDescription} />
         </StyledInputDes>
       </StyledInput>
       <StyledSelect>
-        <label>ステータス</label>
+        <StyledLabel>ステータス</StyledLabel>
         <StyledSelectBar onChange={onChangeStatus}>
-          <option>{Value.status}</option>
+          <option>{Value.state}</option>
           <option>{oppositedStatus}</option>
         </StyledSelectBar>
       </StyledSelect>
       <Blank>{vaildMessege}</Blank>
       <ButtonSet>
-        <Button ButtonName={'更新'} type={'primary'} propsFunction={onSubmit} />
-        <Button ButtonName={'閉じる'} propsFunction={modalPop} />
+        <Button ButtonName={'更新'} type={'primary'} onChange={onSubmit} />
+        <Button ButtonName={'閉じる'} onChange={modalPop} />
       </ButtonSet>
     </Container>
   );

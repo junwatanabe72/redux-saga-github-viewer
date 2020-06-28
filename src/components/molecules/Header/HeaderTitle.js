@@ -16,7 +16,7 @@ function HeaderTitle() {
         to={'/'}
         color={'white'}
         value={'Github Viewer'}
-        hoverColor={'none'}
+        hovercolor={'none'}
       ></LinkButton>
     </Container>
   );

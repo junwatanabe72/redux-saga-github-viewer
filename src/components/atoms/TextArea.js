@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
-  padding: 8px 16px;
+  padding: 12px 8px;
 `;
 const Frame = styled.div`
   border-radius: 6px;
@@ -18,11 +18,11 @@ const InputTextarea = styled.textarea`
   background: none;
 `;
 
-function TextArea({ placeHolder, value, propsFunction }) {
+function TextArea({ placeHolder, value = '', onChange }) {
   return (
     <Container>
       <Frame>
-        <InputTextarea placeHolder={placeHolder} value={value} onChange={propsFunction} />
+        <InputTextarea placeholder={placeHolder} value={value} onChange={onChange} />
       </Frame>
     </Container>
   );

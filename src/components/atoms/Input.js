@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 100%;
-  padding: 8px 16px;
+  padding: 12px 8px;
 `;
 const Frame = styled.div`
   border-radius: 6px;
@@ -20,11 +20,11 @@ const InputBar = styled.input`
   background: none;
 `;
 
-function Input({ placeHolder, value, propsFunction }) {
+function Input({ placeHolder, value, onChange }) {
   return (
     <Container>
       <Frame>
-        <InputBar placeholder={placeHolder} value={value} onChange={propsFunction} />
+        <InputBar placeholder={placeHolder} value={value} onChange={onChange} />
       </Frame>
     </Container>
   );

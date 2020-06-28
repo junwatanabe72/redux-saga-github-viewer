@@ -5,23 +5,33 @@ import styled from 'styled-components';
 const StyledLink = styled(Link)`
   display: inline-block;
   width: 100%;
-  padding: 4px 0;
+  line-height: 30px;
+  height: ${(props) => props.height}px;
   font-size: ${(props) => props.size}px;
   color: ${(props) => props.color};
   &:hover {
-    color: ${(props) => props.hoverColor};
-    background-color: ${(props) => props.hoverBackgroundColor};
+    color: ${(props) => props.hovercolor};
+    background-color: ${(props) => props.hoverbackgroundcolor};
   }
 `;
 
-function LinkButton({ to, size, color = 'black', hoverBackgroundColor, hoverColor, value }) {
+function LinkButton({
+  height,
+  to,
+  size,
+  color = 'black',
+  hoverbackgroundcolor,
+  hovercolor,
+  value,
+}) {
   return (
     <StyledLink
       size={size}
       to={to}
       color={color}
-      hoverBackgroundColor={hoverBackgroundColor}
-      hoverColor={hoverColor}
+      hoverbackgroundcolor={hoverbackgroundcolor}
+      hovercolor={hovercolor}
+      height={height}
     >
       {value}
     </StyledLink>

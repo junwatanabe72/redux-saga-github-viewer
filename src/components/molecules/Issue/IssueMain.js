@@ -9,26 +9,26 @@ const Container = styled.div`
 `;
 
 function IssueMain({
-  propsFunction,
+  onChange,
   serachWord,
   CheckedOrCanceledAll,
   checkedAll,
   data,
   modalPush,
   modalPop,
-  updateIssue,
+  putIssue,
 }) {
   return (
     <Container>
       <IssueTable
-        propsFunction={propsFunction}
+        onChange={onChange}
         serachWord={serachWord}
         CheckedOrCanceledAll={CheckedOrCanceledAll}
         checkedAll={checkedAll}
         data={data}
         modalPush={modalPush}
         modalPop={modalPop}
-        updateIssue={updateIssue}
+        putIssue={putIssue}
       />
     </Container>
   );
