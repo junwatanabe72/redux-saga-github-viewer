@@ -22,6 +22,9 @@ function HeaderLink() {
       <StyledList>
         <LinkButton to={'PullRequest'} value={'Pull Request'} color={'white'} />
       </StyledList>
+      <StyledList>
+        <LinkButton to={'re'} value={'realEstate'} color={'white'} />
+      </StyledList>
     </Container>
   );
 }

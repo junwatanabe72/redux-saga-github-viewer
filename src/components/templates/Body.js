@@ -5,7 +5,7 @@ import Issue from '../../container/IssueContainer';
 import Profile from '../../container/ProfileContainer';
 import Top from '../organisms/Top';
 import PullRequest from '../organisms/Pullrequest';
-
+import RealEstate from '../organisms/RealEstate';
 const Container = styled.div`
   max-width: 896px;
   margin: 0 auto;
@@ -17,6 +17,7 @@ function Body() {
     <Container>
       <Route exact path="/" component={Top}></Route>
       <Route path="/issue" component={Issue}></Route>
+      <Route path="/re" component={RealEstate}></Route>
       <Route path="/profile" component={Profile}></Route>
       <Route path="/pullrequest" component={PullRequest}></Route>
     </Container>

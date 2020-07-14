@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/templates/Header';
 import Body from './components/templates/Body';
 import Modal from './container/ModalContainer';
-
+import { checkAxios} from './service/Axios'; 
 //fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core'; //fontawesomeのコアファイル
 import { fab } from '@fortawesome/free-brands-svg-icons'; //fontawesomeのbrandアイコンのインポート
@@ -14,6 +14,7 @@ library.add(fab, fas, far);
 function App() {
   return (
     <div className="App">
+      <div onClick={()=>checkAxios()}>click</div>
       <Router>
         <Header />
         <Body />

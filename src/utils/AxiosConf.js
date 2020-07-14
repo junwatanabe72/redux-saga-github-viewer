@@ -15,3 +15,6 @@ export const client = axios.create({
     password: TOKEN,
   },
 });
+export const clientre = axios.create({
+  baseURL: 'https://www.land.mlit.go.jp/webland/api/TradeListSearch',
+});

@@ -1,5 +1,5 @@
 import { client, issueURL, issuePutURL, userURL } from '../utils/AxiosConf';
-
+import axios from 'axios';
 //fix
 export async function getAxios() {
   try {
@@ -42,6 +42,17 @@ export async function getUserAxios() {
     return { data };
   } catch (e) {
     return { e };
+  }
+}
+
+export async function checkAxios() {
+  const baseURL ='https://www.land.mlit.go.jp/webland/api/TradeListSearch?';
+  const queries = { params: {from: 20194,to: 20202,city: 13113}};
+  try {
+    const data = await axios.get(baseURL, queries);
+    console.log ({ data });
+  } catch (e) {
+    console.log ({ e });
   }
 }
 
